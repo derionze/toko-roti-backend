@@ -1,11 +1,27 @@
+// import { NestFactory } from '@nestjs/core';
+// import { AppModule } from './app.module';
+
+// async function bootstrap() {
+//   const app = await NestFactory.create(AppModule);
+//   app.enableCors({
+//     origin: '*',
+//   })
+//   await app.listen(process.env.PORT ?? 3000);
+// }
+// bootstrap();
+
+
+// src/main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-async function bootstrap() {
+export async function createNestApplication() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors({
-    origin: '*',
-  })
-  await app.listen(process.env.PORT ?? 3000);
+  app.enableCors({ origin: '*', credentials: true });
+  return app;
 }
-bootstrap();
+
+// Jika sedang dijalankan secara lokal (bukan di serverless)
+if (process.env.NODE_ENV !== 'production') {
+  createNestApplication().then(app => app.listen(3000));
+}
