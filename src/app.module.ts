@@ -22,17 +22,18 @@ import { PromoEntity } from './promo/entities/promo.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'database.sqlite',
-      entities: [UsersEntity, ProdukEntity, KeranjangUsersEntity, PromoEntity],
-      synchronize: true,
-    }),
-    UsersModule,
-    ProdukModule,
-    AuthModule,
-    KeranjangUsersModule,
-    PromoModule
+    AppModule,
+    // TypeOrmModule.forRoot({
+    //   type: 'sqlite',
+    //   database: 'database.sqlite',
+    //   entities: [UsersEntity, ProdukEntity, KeranjangUsersEntity, PromoEntity],
+    //   synchronize: true,
+    // }),
+    // UsersModule,
+    // ProdukModule,
+    // AuthModule,
+    // KeranjangUsersModule,
+    // PromoModule
   ],
   controllers: [AppController,],
   providers: [AppService,],
